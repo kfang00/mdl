@@ -85,31 +85,31 @@ def run(filename):
             reflect = '.white'
 
         elif line == 'circle':
-            add_circle(edges,
+            add_circle(tmp,
                        float(args[0]), float(args[1]), float(args[2]),
                        float(args[3]), step)
-            matrix_mult( stack[-1], edges )
-            draw_lines(edges, screen, zbuffer, color)
-            edges = []
+            matrix_mult( stack[-1], tmp )
+            draw_lines(tmp, screen, zbuffer, color)
+            tmp = []
 
         elif line == 'hermite' or line == 'bezier':
-            add_curve(edges,
+            add_curve(tmp,
                       float(args[0]), float(args[1]),
                       float(args[2]), float(args[3]),
                       float(args[4]), float(args[5]),
                       float(args[6]), float(args[7]),
                       step, line)
-            matrix_mult( stack[-1], edges )
-            draw_lines(edges, screen, zbuffer, color)
-            edges = []
+            matrix_mult( stack[-1], tmp )
+            draw_lines(tmp, screen, zbuffer, color)
+            tmp = []
 
         elif line == 'line':
-            add_edge( edges,
+            add_edge( tmp,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), float(args[5]) )
-            matrix_mult( stack[-1], edges )
-            draw_lines(eges, screen, zbuffer, color)
-            edges = []
+            matrix_mult( stack[-1], tmp )
+            draw_lines(tmp, screen, zbuffer, color)
+            tmp = []
 
         elif line == 'scale':
             t = make_scale(float(args[0]), float(args[1]), float(args[2]))
